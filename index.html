@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>213 Flavours - Authentic Culinary Delights & Catering</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FAF6F0',
+                            card: '#FFFFFF',
+                            primary: '#E85D04',
+                            primaryHover: '#D05203',
+                            secondary: '#F97316',
+                            gold: '#D4AF37',
+                            dark: '#1F1916',
+                            muted: '#6B635B'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF6F0;
+            color: #1F1916;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1EAE0;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E85D04;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-dark antialiased selection:bg-brand-primary selection:text-white pb-20 md:pb-0">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-dark text-amber-200 text-xs md:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>✨ Now taking pre-orders for events & bulk food trays!</span>
+        <a href="#contact" class="underline hover:text-white transition ml-1">Contact Us</a>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-brand-bg/95 backdrop-blur-md border-b border-amber-900/10 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold font-serif-heading text-xl shadow-md group-hover:scale-105 transition">
+                    213
+                </div>
+                <div>
+                    <span class="font-serif-heading text-2xl font-bold tracking-tight text-brand-dark block leading-none">213 Flavours</span>
+                    <span class="text-[10px] tracking-widest uppercase text-brand-primary font-semibold">Taste of Perfection</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-brand-dark/80">
+                <a href="#hero" class="hover:text-brand-primary transition">Home</a>
+                <a href="#cakes" class="hover:text-brand-primary transition">Cakes</a>
+                <a href="#pastries" class="hover:text-brand-primary transition">Pastries</a>
+                <a href="#meals" class="hover:text-brand-primary transition">Nigerian Meals</a>
+                <a href="#drinks" class="hover:text-brand-primary transition">Drinks</a>
+                <a href="#contact" class="hover:text-brand-primary transition">Contact</a>
+            </nav>
+
+            <!-- Actions Right -->
+            <div class="flex items-center gap-3">
+                <!-- Media Manager Trigger Button -->
+                <button onclick="openMediaManager()" class="bg-amber-100 border border-amber-300 text-amber-900 px-3 py-2 rounded-full text-xs sm:text-sm font-semibold hover:bg-amber-200 transition flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-camera text-brand-primary">搞</i>
+                    <span class="hidden sm:inline">Swap Photos</span>
+                    <span class="sm:hidden">Photos</span>
+                </button>
+
+                <!-- WhatsApp Cart Button -->
+                <button onclick="toggleCartDrawer()" class="relative bg-brand-primary hover:bg-brand-primaryHover text-white px-4 py-2 rounded-full text-sm font-semibold transition flex items-center gap-2 shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">Order Cart</span>
+                    <span id="cart-badge-count" class="bg-white text-brand-primary font-bold text-xs px-2 py-0.5 rounded-full">0</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileNav()" class="md:hidden text-brand-dark text-xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-nav" class="hidden md:hidden bg-brand-bg border-b border-amber-900/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" onclick="toggleMobileNav()" class="block py-2 text-brand-dark font-medium border-b border-amber-900/5">Home</a>
+            <a href="#cakes" onclick="toggleMobileNav()" class="block py-2 text-brand-dark font-medium border-b border-amber-900/5">Cakes</a>
+            <a href="#pastries" onclick="toggleMobileNav()" class="block py-2 text-brand-dark font-medium border-b border-amber-900/5">Pastries & Snacks</a>
+            <a href="#meals" onclick="toggleMobileNav()" class="block py-2 text-brand-dark font-medium border-b border-amber-900/5">Nigerian Meals</a>
+            <a href="#drinks" onclick="toggleMobileNav()" class="block py-2 text-brand-dark font-medium border-b border-amber-900/5">Refreshing Drinks</a>
+            <a href="#contact" onclick="toggleMobileNav()" class="block py-2 text-brand-dark font-medium">Contact & Location</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative overflow-hidden pt-8 pb-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-amber-100 border border-amber-200 text-brand-primary px-3 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase">
+                        <i class="fa-solid fa-utensils"></i> Handcrafted Culinary Experience
+                    </div>
+                    <h1 class="font-serif-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight">
+                        Delicious Moments, <br class="hidden sm:inline"/>
+                        <span class="text-brand-primary italic">Made with Love.</span>
+                    </h1>
+                    <p class="text-brand-muted text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Welcome to 213 Flavours! We specialize in custom celebratory cakes, golden buttery pastries, hearty authentic Nigerian meals, and freshly brewed local beverages. Prepared fresh daily with premium ingredients.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#cakes" class="w-full sm:w-auto bg-brand-primary hover:bg-brand-primaryHover text-white px-8 py-3.5 rounded-full font-semibold shadow-lg shadow-orange-500/20 transition text-center">
+                            Explore Full Menu
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto border-2 border-brand-dark/20 hover:border-brand-primary text-brand-dark hover:text-brand-primary px-8 py-3.5 rounded-full font-semibold transition text-center">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-amber-900/10 text-center lg:text-left">
+                        <div>
+                            <p class="font-serif-heading text-2xl font-bold text-brand-dark">100%</p>
+                            <p class="text-xs text-brand-muted">Fresh Ingredients</p>
+                        </div>
+                        <div>
+                            <p class="font-serif-heading text-2xl font-bold text-brand-dark">Custom</p>
+                            <p class="text-xs text-brand-muted">Cake Designs</p>
+                        </div>
+                        <div>
+                            <p class="font-serif-heading text-2xl font-bold text-brand-dark">Fast</p>
+                            <p class="text-xs text-brand-muted">Doorstep Delivery</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Display with Quick Swap Trigger -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-brand-primary to-brand-gold rounded-3xl blur-xl opacity-20"></div>
+                        <div class="relative bg-white p-3 rounded-3xl shadow-xl border border-amber-900/10 group">
+                            <img id="img-hero" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="213 Flavours Showcase" class="w-full h-80 sm:h-96 object-cover rounded-2xl">
+                            
+                            <!-- Quick Image Swap Button Overlay -->
+                            <button onclick="openPhotoCustomizerModal('hero', 'Hero Banner Showcase')" class="absolute top-5 right-5 bg-black/60 hover:bg-brand-primary text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-md transition flex items-center gap-1.5 shadow-md">
+                                <i class="fa-solid fa-camera"></i>
+                                <span>Change Hero Image</span>
+                            </button>
+
+                            <div class="p-4 flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-serif-heading font-bold text-lg text-brand-dark">Signature Specials</h3>
+                                    <p class="text-xs text-brand-muted">Handcrafted with precision and passion</p>
+                                </div>
+                                <span class="bg-amber-100 text-brand-primary text-xs font-bold px-2.5 py-1 rounded-full">Top Rated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY NAV TABS / QUICK SEARCH -->
+    <section class="sticky top-20 z-30 bg-brand-bg/90 backdrop-blur-sm border-y border-amber-900/10 py-3 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between overflow-x-auto gap-4 custom-scrollbar">
+            <div class="flex items-center gap-2 sm:gap-4 whitespace-nowrap text-sm font-medium">
+                <a href="#cakes" class="bg-white border border-amber-200 hover:border-brand-primary px-4 py-2 rounded-full text-brand-dark hover:text-brand-primary transition">🎂 Cakes</a>
+                <a href="#pastries" class="bg-white border border-amber-200 hover:border-brand-primary px-4 py-2 rounded-full text-brand-dark hover:text-brand-primary transition">🥐 Pastries & Snacks</a>
+                <a href="#meals" class="bg-white border border-amber-200 hover:border-brand-primary px-4 py-2 rounded-full text-brand-dark hover:text-brand-primary transition">🍲 Nigerian Meals</a>
+                <a href="#drinks" class="bg-white border border-amber-200 hover:border-brand-primary px-4 py-2 rounded-full text-brand-dark hover:text-brand-primary transition">🍷 Local Drinks</a>
+            </div>
+            <button onclick="openMediaManager()" class="hidden md:flex text-xs text-brand-primary font-bold hover:underline whitespace-nowrap items-center gap-1">
+                <i class="fa-solid fa-gear"></i> Manage All Photos
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 1: CAKES -->
+    <section id="cakes" class="py-16 border-b border-amber-900/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-brand-primary font-bold text-xs tracking-wider uppercase">Freshly Baked Goodness</span>
+                    <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-brand-dark mt-1">Custom & Celebration Cakes</h2>
+                </div>
+                <p class="text-brand-muted text-sm max-w-md mt-2 md:mt-0">Perfect for birthdays, weddings, anniversaries, or sweet personal cravings.</p>
+            </div>
+
+            <!-- Cakes Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="cakes-container">
+                <!-- Dynamically rendered via JS -->
+            </div>
+
+            <!-- Custom Cake Callout Box -->
+            <div class="mt-12 bg-gradient-to-r from-amber-900 to-brand-dark rounded-3xl text-white p-8 sm:p-12 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl font-serif-heading">🎂</div>
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Tailored for You</span>
+                    <h3 class="font-serif-heading text-2xl sm:text-3xl font-bold mt-3 mb-2">Need a Unique Custom Cake Design?</h3>
+                    <p class="text-amber-100/80 text-sm mb-6 leading-relaxed">Have a specific theme, tiered structure, or custom flavor in mind? Share your inspiration photo or requirements and we'll bake it to life!</p>
+                    <button onclick="openCustomCakeModal()" class="bg-brand-primary hover:bg-brand-primaryHover text-white px-6 py-3 rounded-full font-semibold transition shadow-md inline-flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Submit Custom Cake Request</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: PASTRIES & SNACKS -->
+    <section id="pastries" class="py-16 border-b border-amber-900/5 bg-white/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-brand-primary font-bold text-xs tracking-wider uppercase">Golden & Savory</span>
+                    <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-brand-dark mt-1">Pastries & Small Chops</h2>
+                </div>
+                <div class="mt-3 md:mt-0 bg-amber-100 text-amber-900 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-2">
+                    <i class="fa-solid fa-sparkles text-brand-primary"></i>
+                    <span>Bulk Orders Welcome for Events & Parties!</span>
+                </div>
+            </div>
+
+            <!-- Pastries Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="pastries-container">
+                <!-- Dynamically rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: NIGERIAN MEALS -->
+    <section id="meals" class="py-16 border-b border-amber-900/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-brand-primary font-bold text-xs tracking-wider uppercase">Authentic Kitchen</span>
+                <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-brand-dark mt-1">Authentic Nigerian Meals</h2>
+                <p class="text-brand-muted text-sm mt-2">Rich soups, aromatic stews, and seasoned rice dishes cooked with traditional spices.</p>
+                
+                <!-- Category Filters for Meals -->
+                <div class="flex flex-wrap justify-center gap-2 mt-6" id="meal-tabs">
+                    <button onclick="filterMeals('all')" class="meal-tab active-tab bg-brand-primary text-white px-4 py-1.5 rounded-full text-xs font-semibold transition" data-cat="all">All Dishes</button>
+                    <button onclick="filterMeals('soups')" class="meal-tab bg-white border border-amber-200 text-brand-dark px-4 py-1.5 rounded-full text-xs font-semibold transition hover:border-brand-primary" data-cat="soups">Soups & Sauces</button>
+                    <button onclick="filterMeals('stews')" class="meal-tab bg-white border border-amber-200 text-brand-dark px-4 py-1.5 rounded-full text-xs font-semibold transition hover:border-brand-primary" data-cat="stews">Rich Stews</button>
+                    <button onclick="filterMeals('rice')" class="meal-tab bg-white border border-amber-200 text-brand-dark px-4 py-1.5 rounded-full text-xs font-semibold transition hover:border-brand-primary" data-cat="rice">Rice Dishes</button>
+                </div>
+            </div>
+
+            <!-- Meals Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="meals-container">
+                <!-- Dynamically rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: DRINKS -->
+    <section id="drinks" class="py-16 bg-white/50 border-b border-amber-900/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-brand-primary font-bold text-xs tracking-wider uppercase">Refreshing & Chilled</span>
+                    <h2 class="font-serif-heading text-3xl sm:text-4xl font-bold text-brand-dark mt-1">Local Drinks & Beverages</h2>
+                </div>
+                <p class="text-brand-muted text-sm max-w-md mt-2 md:mt-0">100% natural, hygienic, and expertly blended local delights.</p>
+            </div>
+
+            <!-- Drinks Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="drinks-container">
+                <!-- Dynamically rendered via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & WHATSAPP ORDER BUILDER SECTION -->
+    <section id="contact" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Contact Info & Business Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-brand-primary font-bold text-xs tracking-wider uppercase">Get In Touch</span>
+                        <h2 class="font-serif-heading text-3xl font-bold text-brand-dark mt-1">We’re Ready to Serve You</h2>
+                        <p class="text-brand-muted text-sm mt-2">Have questions or want to place a custom bulk order directly? Contact our customer support team.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-2xl border border-amber-900/10 shadow-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 text-brand-primary flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-sm">WhatsApp Line</h4>
+                                <p class="text-xs text-brand-muted mb-1">Instant chat response for orders & enquiries</p>
+                                <a href="https://wa.me/2348000000000" target="_blank" class="text-sm font-semibold text-brand-primary hover:underline">+234 [Your WhatsApp Number]</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-2xl border border-amber-900/10 shadow-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 text-brand-primary flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-sm">Kitchen Location</h4>
+                                <p class="text-xs text-brand-muted mb-1">Pickups & Deliveries</p>
+                                <p class="text-sm font-semibold text-brand-dark">[Your Business Address, Lagos, Nigeria]</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-2xl border border-amber-900/10 shadow-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 text-brand-primary flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-dark text-sm">Social Media</h4>
+                                <p class="text-xs text-brand-muted mb-1">Follow our daily stories and food videos</p>
+                                <a href="https://instagram.com" target="_blank" class="text-sm font-semibold text-brand-primary hover:underline">@[Your Instagram Handle]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Order Summary & Direct WhatsApp Builder -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-amber-900/10 shadow-xl">
+                    <div class="flex items-center justify-between border-b border-amber-900/10 pb-4 mb-6">
+                        <div>
+                            <h3 class="font-serif-heading font-bold text-xl text-brand-dark">Your Order Summary</h3>
+                            <p class="text-xs text-brand-muted">Review selected items before sending to WhatsApp</p>
+                        </div>
+                        <button onclick="clearCart()" class="text-xs text-red-500 hover:underline">Clear All</button>
+                    </div>
+
+                    <!-- Cart Items Display Container -->
+                    <div id="contact-cart-items" class="space-y-3 max-h-60 overflow-y-auto custom-scrollbar pr-1 mb-6">
+                        <!-- Populated by JavaScript -->
+                    </div>
+
+                    <!-- Delivery & Notes Input -->
+                    <div class="space-y-4 pt-2 border-t border-amber-900/10">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-brand-dark mb-1">Your Name *</label>
+                                <input type="text" id="cust-name" placeholder="e.g. John Doe" class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-brand-dark mb-1">Delivery Address / Pickup *</label>
+                                <input type="text" id="cust-address" placeholder="e.g. Lekki Phase 1 / Pickup" class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-brand-dark mb-1">Special Instructions / Portion Notes</label>
+                            <textarea id="cust-notes" rows="2" placeholder="e.g. Extra spicy for Ofada, deliver by 2 PM..." class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Total & Order Submit Button -->
+                    <div class="mt-6 pt-4 border-t border-amber-900/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs text-brand-muted block">Estimated Total</span>
+                            <span class="font-serif-heading font-bold text-2xl text-brand-primary" id="contact-cart-total">₦ 0</span>
+                        </div>
+                        <button onclick="submitWhatsAppOrder()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3.5 rounded-full font-bold shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Send Order via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-amber-100/70 py-12 border-t border-amber-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold font-serif-heading text-sm">
+                            213
+                        </div>
+                        <span class="font-serif-heading text-xl font-bold text-white">213 Flavours</span>
+                    </div>
+                    <p class="text-xs text-amber-100/60">Crafting unforgettable culinary memories one dish at a time.</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6 text-xs text-amber-100/80">
+                    <a href="#cakes" class="hover:text-white transition">Cakes</a>
+                    <a href="#pastries" class="hover:text-white transition">Pastries</a>
+                    <a href="#meals" class="hover:text-white transition">Meals</a>
+                    <a href="#drinks" class="hover:text-white transition">Drinks</a>
+                    <button onclick="openMediaManager()" class="hover:text-brand-primary transition">Image Customizer</button>
+                </div>
+
+                <p class="text-xs text-amber-100/40">© 2026 213 Flavours. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: MEDIA MANAGER / IMAGE CUSTOMIZER DRAWER -->
+    <div id="media-manager-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="bg-brand-dark text-white p-6 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center">
+                        <i class="fa-solid fa-camera text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif-heading font-bold text-lg">Image Customizer & Media Manager</h3>
+                        <p class="text-xs text-amber-200/70">Swap photos on any card using image URLs or local files</p>
+                    </div>
+                </div>
+                <button onclick="closeMediaManager()" class="text-amber-200/70 hover:text-white text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable list of items) -->
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-6 flex-1 bg-amber-50/30">
+                
+                <div class="bg-amber-100 border border-amber-200 p-4 rounded-2xl text-xs text-amber-900 flex items-start gap-3">
+                    <i class="fa-solid fa-circle-info text-brand-primary text-base shrink-0 mt-0.5"></i>
+                    <div>
+                        <p class="font-bold mb-0.5">How to customize pictures:</p>
+                        <p>1. Either paste an Image web URL (Unsplash, Pinterest, Imgur, etc.) OR click <strong>Upload Local File</strong> to choose a picture from your device.</p>
+                        <p class="mt-1 font-semibold text-brand-primary">All changes save automatically to your browser local storage!</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between border-b border-amber-900/10 pb-2">
+                    <h4 class="font-serif-heading font-bold text-brand-dark">Product Images List</h4>
+                    <button onclick="resetAllPhotos()" class="text-xs text-red-600 font-semibold hover:underline flex items-center gap-1">
+                        <i class="fa-solid fa-rotate-left"></i> Reset All to Default Photos
+                    </button>
+                </div>
+
+                <!-- Dynamic Item List for editing -->
+                <div id="media-manager-items-list" class="space-y-4">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-white border-t border-amber-900/10 flex justify-end">
+                <button onclick="closeMediaManager()" class="bg-brand-dark hover:bg-black text-white px-6 py-2.5 rounded-full font-semibold text-sm transition">
+                    Done & Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: SINGLE PRODUCT PHOTO CUSTOMIZER QUICK MODAL -->
+    <div id="quick-photo-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden p-6 space-y-5">
+            <div class="flex items-center justify-between border-b border-amber-900/10 pb-3">
+                <h3 class="font-serif-heading font-bold text-lg text-brand-dark" id="quick-photo-title">Change Photo</h3>
+                <button onclick="closeQuickPhotoModal()" class="text-brand-muted hover:text-brand-dark">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="text-center space-y-2">
+                <img id="quick-photo-preview" src="" alt="Preview" class="w-full h-48 object-cover rounded-2xl border border-amber-900/10">
+                <p class="text-xs text-brand-muted">Current Active Preview</p>
+            </div>
+
+            <!-- Tab / Options -->
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-brand-dark mb-1">Option A: Paste Image URL</label>
+                    <input type="url" id="quick-photo-url-input" placeholder="https://images.unsplash.com/..." class="w-full text-xs p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary">
+                </div>
+
+                <div class="relative flex py-1 items-center">
+                    <div class="flex-grow border-t border-amber-900/10"></div>
+                    <span class="flex-shrink mx-2 text-[10px] text-brand-muted uppercase font-bold">OR</span>
+                    <div class="flex-grow border-t border-amber-900/10"></div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-brand-dark mb-1">Option B: Upload Local Picture File</label>
+                    <input type="file" id="quick-photo-file-input" accept="image/*" class="w-full text-xs text-brand-muted file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-amber-100 file:text-brand-primary hover:file:bg-amber-200">
+                </div>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+                <button onclick="saveQuickPhotoChange()" class="w-full bg-brand-primary hover:bg-brand-primaryHover text-white py-3 rounded-full font-bold text-xs transition">
+                    Save New Photo
+                </button>
+                <button onclick="closeQuickPhotoModal()" class="w-1/3 bg-amber-100 hover:bg-amber-200 text-brand-dark py-3 rounded-full font-semibold text-xs transition">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: CUSTOM CAKE REQUEST MODAL -->
+    <div id="custom-cake-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-amber-900/10 pb-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎂</span>
+                    <h3 class="font-serif-heading font-bold text-xl text-brand-dark">Custom Cake Inquiry</h3>
+                </div>
+                <button onclick="closeCustomCakeModal()" class="text-brand-muted hover:text-brand-dark">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-brand-dark mb-1">Cake Event Type</label>
+                    <select id="cake-event-type" class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30">
+                        <option value="Birthday Cake">Birthday Cake</option>
+                        <option value="Wedding Cake">Wedding Cake</option>
+                        <option value="Anniversary Cake">Anniversary Cake</option>
+                        <option value="Custom Character Cake">Custom Character Cake</option>
+                        <option value="Bridal / Baby Shower Cake">Bridal / Baby Shower Cake</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-brand-dark mb-1">Preferred Size / Tiers</label>
+                        <input type="text" id="cake-size" placeholder="e.g. 8-inch 2 Tier" class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-brand-dark mb-1">Event Date</label>
+                        <input type="date" id="cake-date" class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-brand-dark mb-1">Flavor & Design Details</label>
+                    <textarea id="cake-details" rows="3" placeholder="Specify flavors (Vanilla, Red Velvet, Chocolate), color schemes, topper text, or dietary preferences..." class="w-full text-sm p-3 rounded-xl border border-amber-200 focus:outline-none focus:border-brand-primary bg-amber-50/30"></textarea>
+                </div>
+            </div>
+
+            <button onclick="sendCustomCakeRequest()" class="w-full bg-brand-primary hover:bg-brand-primaryHover text-white py-3.5 rounded-full font-bold shadow-md transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Send Custom Cake Request via WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- CART DRAWER / SIDE PANEL -->
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="bg-brand-dark text-white p-6 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-brand-primary text-xl"></i>
+                <h3 class="font-serif-heading font-bold text-lg">Your Selected Items</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="text-amber-200/70 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="p-6 flex-1 overflow-y-auto custom-scrollbar space-y-4" id="drawer-cart-items">
+            <!-- Populated dynamically -->
+        </div>
+
+        <div class="p-6 bg-amber-50/50 border-t border-amber-900/10 space-y-4">
+            <div class="flex items-center justify-between font-serif-heading text-lg font-bold">
+                <span>Subtotal:</span>
+                <span id="drawer-cart-total" class="text-brand-primary">₦ 0</span>
+            </div>
+            <a href="#contact" onclick="toggleCartDrawer()" class="block w-full text-center bg-brand-primary hover:bg-brand-primaryHover text-white py-3.5 rounded-full font-bold transition shadow-md">
+                Proceed to Checkout Form
+            </a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & STATE MANAGEMENT -->
+    <script>
+        // CONFIGURABLE PHONE NUMBER PLACEHOLDER
+        const WHATSAPP_NUMBER = "2348000000000"; // Replace with actual business WhatsApp number
+
+        // DEFAULT PRODUCT CATALOG DATA
+        const DEFAULT_PRODUCTS = {
+            'hero': {
+                id: 'hero',
+                title: 'Hero Banner Showcase',
+                category: 'Hero',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+            },
+            // CAKES
+            'cake-1': {
+                id: 'cake-1',
+                title: 'Classic Vanilla Celebration Cake',
+                category: 'cakes',
+                price: 18000,
+                desc: 'Moist golden vanilla layers topped with silky whipped buttercream.',
+                image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=600&q=80'
+            },
+            'cake-2': {
+                id: 'cake-2',
+                title: 'Rich Fudge Chocolate Cake',
+                category: 'cakes',
+                price: 22000,
+                desc: 'Decadent dark chocolate sponge layered with rich ganache.',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80'
+            },
+            'cake-3': {
+                id: 'cake-3',
+                title: 'Red Velvet Cream Cheese Cake',
+                category: 'cakes',
+                price: 24000,
+                desc: 'Traditional velvet crumbs paired with tangy cream cheese frosting.',
+                image: 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=600&q=80'
+            },
+            'cake-4': {
+                id: 'cake-4',
+                title: 'Zesty Lemon Sponge Cake',
+                category: 'cakes',
+                price: 20000,
+                desc: 'Refreshing citrus lemon sponge topped with lemon curd drizzle.',
+                image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80'
+            },
+            'cake-5': {
+                id: 'cake-5',
+                title: 'Tiered Custom Celebration Cake',
+                category: 'cakes',
+                price: 45000,
+                desc: 'Multi-layered custom themed cake for weddings and big birthdays.',
+                image: 'https://images.unsplash.com/photo-1562440499-64c9a111f713?auto=format&fit=crop&w=600&q=80'
+            },
+            'cake-6': {
+                id: 'cake-6',
+                title: 'Layered Cake Parfait Cup',
+                category: 'cakes',
+                price: 3500,
+                desc: 'Convenient cups layered with cake crumbs, cream, and fruit preserves.',
+                image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80'
+            },
+
+            // PASTRIES & SNACKS
+            'pastry-1': {
+                id: 'pastry-1',
+                title: 'Glazed & Sugar Doughnuts',
+                category: 'pastries',
+                price: 1000,
+                desc: 'Fluffy fried doughnuts with sweet sugar icing glazed to perfection.',
+                image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80'
+            },
+            'pastry-2': {
+                id: 'pastry-2',
+                title: 'Traditional Flaky Meat Pie',
+                category: 'pastries',
+                price: 1200,
+                desc: 'Golden buttery pastry stuffed with seasoned minced beef & potatoes.',
+                image: 'https://images.unsplash.com/photo-1621236378699-8597faf6a145?auto=format&fit=crop&w=600&q=80'
+            },
+            'pastry-3': {
+                id: 'pastry-3',
+                title: 'Savory Chicken Pie',
+                category: 'pastries',
+                price: 1500,
+                desc: 'Flaky crust packed with shredded tender chicken breast and veggies.',
+                image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80'
+            },
+            'pastry-4': {
+                id: 'pastry-4',
+                title: 'Small Chops Party Pack',
+                category: 'pastries',
+                price: 5000,
+                desc: 'Assorted platter of Spring Rolls, Samosa, Puff-Puff, and Spicy Gizzard.',
+                image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80'
+            },
+            'pastry-5': {
+                id: 'pastry-5',
+                title: 'Golden Sausage Rolls',
+                category: 'pastries',
+                price: 1000,
+                desc: 'Crispy pastry roll wrapped around spiced sausage meat fillings.',
+                image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80'
+            },
+
+            // MEALS
+            'meal-1': {
+                id: 'meal-1',
+                title: 'Egusi Soup with Assorted Meat',
+                category: 'soups',
+                price: 4500,
+                desc: 'Rich melon seed soup cooked with stockfish, beef, and leafy spinach.',
+                image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-2': {
+                id: 'meal-2',
+                title: 'Special Ofada Sauce & Rice',
+                category: 'soups',
+                price: 5000,
+                desc: 'Spicy bleached palm oil pepper sauce with boiled eggs, beef & intestine.',
+                image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-3': {
+                id: 'meal-3',
+                title: 'Efo Riro (Spinach Stew)',
+                category: 'soups',
+                price: 4500,
+                desc: 'Traditional Yoruba vegetable soup rich in locust beans & assorted meat.',
+                image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-4': {
+                id: 'meal-4',
+                title: 'Signature Nigerian Jollof Rice',
+                category: 'rice',
+                price: 4000,
+                desc: 'Smoky party jollof rice served with fried plantains and chicken.',
+                image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-5': {
+                id: 'meal-5',
+                title: 'Special Fried Rice',
+                category: 'rice',
+                price: 4000,
+                desc: 'Seasoned rice tossed with veggies, liver bits, and sweet corn.',
+                image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-6': {
+                id: 'meal-6',
+                title: 'Spicy Asun Peppered Rice',
+                category: 'rice',
+                price: 5000,
+                desc: 'Flavored rice infused with peppered smoked goat meat chunks.',
+                image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-7': {
+                id: 'meal-7',
+                title: 'Peppered Chicken Stew',
+                category: 'stews',
+                price: 3500,
+                desc: 'Rich tomato-pepper sauce served with deeply fried tender chicken.',
+                image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80'
+            },
+            'meal-8': {
+                id: 'meal-8',
+                title: 'Fried Beef Stew',
+                category: 'stews',
+                price: 3500,
+                desc: 'Slow-cooked rich red pepper stew with seasoned beef chunks.',
+                image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80'
+            },
+
+            // DRINKS
+            'drink-1': {
+                id: 'drink-1',
+                title: 'Chilled Zobo Drink (Hibiscus)',
+                category: 'drinks',
+                price: 1000,
+                desc: 'Natural hibiscus tea infused with pineapple, ginger, and cloves.',
+                image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80'
+            },
+            'drink-2': {
+                id: 'drink-2',
+                title: 'Creamy Tigernut Drink (Kunu Aya)',
+                category: 'drinks',
+                price: 1500,
+                desc: 'Nutritious milk made from blended tiger nuts, dates, and coconut.',
+                image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=600&q=80'
+            },
+            'drink-3': {
+                id: 'drink-3',
+                title: 'Fresh Soya Milk Drink',
+                category: 'drinks',
+                price: 1200,
+                desc: 'Smooth, organic sweetened soya bean beverage served chilled.',
+                image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=600&q=80'
+            },
+            'drink-4': {
+                id: 'drink-4',
+                title: 'Sweetened Dutch Yoghurt',
+                category: 'drinks',
+                price: 2000,
+                desc: 'Thick, creamy probiotic yoghurt beverage.',
+                image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80'
+            }
+        };
+
+        // APPLICATION STATE
+        let products = {};
+        let cart = [];
+        let currentEditingProductId = null;
+
+        // INITIALIZATION
+        window.onload = function() {
+            loadProductsFromStorage();
+            renderAllSections();
+            updateCartUI();
+        };
+
+        // LOCALSTORAGE MANAGERS FOR PHOTOS
+        function loadProductsFromStorage() {
+            const saved = localStorage.getItem('213_flavours_products_v1');
+            if (saved) {
+                try {
+                    products = JSON.parse(saved);
+                } catch(e) {
+                    products = { ...DEFAULT_PRODUCTS };
+                }
+            } else {
+                products = { ...DEFAULT_PRODUCTS };
+            }
+        }
+
+        function saveProductsToStorage() {
+            localStorage.setItem('213_flavours_products_v1', JSON.stringify(products));
+        }
+
+        function resetAllPhotos() {
+            if(confirm("Are you sure you want to reset all product photos back to default sample images?")) {
+                products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+                saveProductsToStorage();
+                renderAllSections();
+                populateMediaManagerList();
+                // update hero
+                if (document.getElementById('img-hero')) {
+                    document.getElementById('img-hero').src = products['hero'].image;
+                }
+                alert("All images reset successfully!");
+            }
+        }
+
+        // RENDER FUNCTIONS
+        function renderAllSections() {
+            // Update Hero if updated
+            if (products['hero'] && document.getElementById('img-hero')) {
+                document.getElementById('img-hero').src = products['hero'].image;
+            }
+
+            // Render Cakes
+            const cakesList = Object.values(products).filter(p => p.category === 'cakes');
+            renderProductGrid('cakes-container', cakesList);
+
+            // Render Pastries
+            const pastriesList = Object.values(products).filter(p => p.category === 'pastries');
+            renderProductGrid('pastries-container', pastriesList);
+
+            // Render Meals
+            filterMeals('all');
+
+            // Render Drinks
+            const drinksList = Object.values(products).filter(p => p.category === 'drinks');
+            renderProductGrid('drinks-container', drinksList);
+        }
+
+        function renderProductGrid(containerId, items) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = items.map(item => `
+                <div class="bg-white rounded-3xl overflow-hidden border border-amber-900/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <!-- Card Image with Quick Swap Hover Button -->
+                    <div class="relative overflow-hidden h-52 bg-amber-50">
+                        <img id="card-img-${item.id}" src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        
+                        <!-- Overlay Photo Edit Badge -->
+                        <button onclick="openPhotoCustomizerModal('${item.id}', '${escapeQuotes(item.title)}')" class="absolute top-3 right-3 bg-black/60 hover:bg-brand-primary text-white text-[11px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-md transition flex items-center gap-1 shadow">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Edit Photo</span>
+                        </button>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="font-serif-heading font-bold text-lg text-brand-dark group-hover:text-brand-primary transition">${item.title}</h3>
+                            </div>
+                            <p class="text-xs text-brand-muted line-clamp-2">${item.desc}</p>
+                        </div>
+
+                        <div class="pt-2 border-t border-amber-900/5 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-brand-muted uppercase font-bold block">Price</span>
+                                <span class="font-serif-heading font-bold text-lg text-brand-primary">₦ ${item.price.toLocaleString()}</span>
+                            </div>
+                            <button onclick="addToCart('${item.id}')" class="bg-brand-primary hover:bg-brand-primaryHover text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-md transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add to Order</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterMeals(category) {
+            // Update active tab buttons UI
+            document.querySelectorAll('.meal-tab').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.className = "meal-tab active-tab bg-brand-primary text-white px-4 py-1.5 rounded-full text-xs font-semibold transition";
+                } else {
+                    btn.className = "meal-tab bg-white border border-amber-200 text-brand-dark px-4 py-1.5 rounded-full text-xs font-semibold transition hover:border-brand-primary";
+                }
+            });
+
+            let mealItems = Object.values(products).filter(p => ['soups', 'stews', 'rice'].includes(p.category));
+            if (category !== 'all') {
+                mealItems = mealItems.filter(p => p.category === category);
+            }
+
+            renderProductGrid('meals-container', mealItems);
+        }
+
+        // CART LOGIC
+        function addToCart(productId) {
+            const product = products[productId];
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    qty: 1
+                });
+            }
+
+            updateCartUI();
+            
+            // Subtle toast message or drawer notification
+            const badge = document.getElementById('cart-badge-count');
+            if(badge) {
+                badge.classList.add('scale-125');
+                setTimeout(() => badge.classList.remove('scale-125'), 200);
+            }
+        }
+
+        function changeQty(productId, delta) {
+            const idx = cart.findIndex(item => item.id === productId);
+            if (idx > -1) {
+                cart[idx].qty += delta;
+                if (cart[idx].qty <= 0) {
+                    cart.splice(idx, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+            // Update Header Counter Badge
+            document.getElementById('cart-badge-count').innerText = totalQty;
+
+            // Update Drawer HTML
+            const drawerItems = document.getElementById('drawer-cart-items');
+            if (drawerItems) {
+                if (cart.length === 0) {
+                    drawerItems.innerHTML = `
+                        <div class="text-center py-12 text-brand-muted space-y-2">
+                            <i class="fa-solid fa-basket-shopping text-4xl text-amber-200"></i>
+                            <p class="text-sm">Your order list is empty.</p>
+                            <p class="text-xs text-amber-900/60">Add items from the menu above!</p>
+                        </div>
+                    `;
+                } else {
+                    drawerItems.innerHTML = cart.map(item => `
+                        <div class="flex items-center justify-between p-3 bg-amber-50/60 rounded-2xl border border-amber-900/5">
+                            <div>
+                                <h4 class="font-bold text-xs text-brand-dark">${item.title}</h4>
+                                <p class="text-xs text-brand-primary font-semibold">₦ ${(item.price * item.qty).toLocaleString()}</p>
+                            </div>
+                            <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-amber-200">
+                                <button onclick="changeQty('${item.id}', -1)" class="text-xs w-5 h-5 rounded-full bg-amber-100 font-bold hover:bg-amber-200">-</button>
+                                <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                                <button onclick="changeQty('${item.id}', 1)" class="text-xs w-5 h-5 rounded-full bg-brand-primary text-white font-bold hover:bg-brand-primaryHover">+</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Update Drawer Total
+            document.getElementById('drawer-cart-total').innerText = `₦ ${totalPrice.toLocaleString()}`;
+
+            // Update Contact Section Cart Summary HTML
+            const contactItems = document.getElementById('contact-cart-items');
+            if (contactItems) {
+                if (cart.length === 0) {
+                    contactItems.innerHTML = `<p class="text-xs text-brand-muted italic">No items selected yet. Select delicious treats from the menu above!</p>`;
+                } else {
+                    contactItems.innerHTML = cart.map(item => `
+                        <div class="flex items-center justify-between py-2 border-b border-amber-900/5 text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-brand-primary">${item.qty}x</span>
+                                <span class="font-medium text-brand-dark">${item.title}</span>
+                            </div>
+                            <span class="font-semibold text-brand-dark">₦ ${(item.price * item.qty).toLocaleString()}</span>
+                        </div>
+                    `).join('');
+                }
+            }
+            document.getElementById('contact-cart-total').innerText = `₦ ${totalPrice.toLocaleString()}`;
+        }
+
+        // WHATSAPP ORDER SUBMISSION
+        function submitWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert("Your cart is empty! Please add some delicious food items first.");
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const notes = document.getElementById('cust-notes').value.trim();
+
+            if (!name || !address) {
+                alert("Please fill in your Name and Delivery/Pickup address before placing the order.");
+                return;
+            }
+
+            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+            let message = `*NEW ORDER - 213 FLAVOURS*\n`;
+            message += `------------------------------------\n`;
+            message += `*Customer Name:* ${name}\n`;
+            message += `*Delivery / Location:* ${address}\n`;
+            if (notes) message += `*Notes:* ${notes}\n`;
+            message += `------------------------------------\n`;
+            message += `*ITEMS ORDERED:*\n`;
+
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.title} (x${item.qty}) - ₦ ${(item.price * item.qty).toLocaleString()}\n`;
+            });
+
+            message += `------------------------------------\n`;
+            message += `*TOTAL ESTIMATE:* ₦ ${totalPrice.toLocaleString()}\n`;
+            message += `------------------------------------\n`;
+            message += `Please confirm availability and payment details. Thank you!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        }
+
+        function sendCustomCakeRequest() {
+            const eventType = document.getElementById('cake-event-type').value;
+            const size = document.getElementById('cake-size').value.trim();
+            const date = document.getElementById('cake-date').value;
+            const details = document.getElementById('cake-details').value.trim();
+
+            let msg = `*CUSTOM CAKE INQUIRY - 213 FLAVOURS*\n`;
+            msg += `------------------------------------\n`;
+            msg += `*Event Type:* ${eventType}\n`;
+            if (size) msg += `*Size / Tiers:* ${size}\n`;
+            if (date) msg += `*Event Date:* ${date}\n`;
+            if (details) msg += `*Specific Details / Flavors:* ${details}\n`;
+            msg += `------------------------------------\n`;
+            msg += `I would like to get a quote for this custom cake order!`;
+
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            closeCustomCakeModal();
+        }
+
+        // IMAGE CUSTOMIZER / MEDIA MANAGER LOGIC
+        function openMediaManager() {
+            populateMediaManagerList();
+            document.getElementById('media-manager-modal').classList.remove('hidden');
+        }
+
+        function closeMediaManager() {
+            document.getElementById('media-manager-modal').classList.add('hidden');
+        }
+
+        function populateMediaManagerList() {
+            const container = document.getElementById('media-manager-items-list');
+            if (!container) return;
+
+            container.innerHTML = Object.values(products).map(item => `
+                <div class="bg-white p-4 rounded-2xl border border-amber-900/10 shadow-sm flex flex-col sm:flex-row items-center gap-4">
+                    <img id="media-thumb-${item.id}" src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-xl border border-amber-900/10 shrink-0">
+                    <div class="flex-1 text-center sm:text-left space-y-1">
+                        <h5 class="font-serif-heading font-bold text-sm text-brand-dark">${item.title}</h5>
+                        <p class="text-[10px] text-brand-muted uppercase font-semibold">Category: ${item.category}</p>
+                    </div>
+                    <button onclick="openPhotoCustomizerModal('${item.id}', '${escapeQuotes(item.title)}')" class="bg-amber-100 hover:bg-brand-primary hover:text-white text-brand-primary text-xs px-4 py-2 rounded-full font-semibold transition">
+                        <i class="fa-solid fa-pen-to-square"></i> Replace Photo
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function openPhotoCustomizerModal(productId, productTitle) {
+            currentEditingProductId = productId;
+            const item = products[productId];
+
+            document.getElementById('quick-photo-title').innerText = `Change Photo: ${productTitle || item.title}`;
+            document.getElementById('quick-photo-preview').src = item ? item.image : '';
+            document.getElementById('quick-photo-url-input').value = item && !item.image.startsWith('data:') ? item.image : '';
+            document.getElementById('quick-photo-file-input').value = '';
+
+            document.getElementById('quick-photo-modal').classList.remove('hidden');
+        }
+
+        function closeQuickPhotoModal() {
+            document.getElementById('quick-photo-modal').classList.add('hidden');
+            currentEditingProductId = null;
+        }
+
+        function saveQuickPhotoChange() {
+            if (!currentEditingProductId) return;
+
+            const urlInput = document.getElementById('quick-photo-url-input').value.trim();
+            const fileInput = document.getElementById('quick-photo-file-input');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Img = e.target.result;
+                    applyNewPhoto(currentEditingProductId, base64Img);
+                    closeQuickPhotoModal();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else if (urlInput) {
+                applyNewPhoto(currentEditingProductId, urlInput);
+                closeQuickPhotoModal();
+            } else {
+                alert("Please paste an Image URL or select a Local File first.");
+            }
+        }
+
+        function applyNewPhoto(productId, newImgUrl) {
+            if (products[productId]) {
+                products[productId].image = newImgUrl;
+                saveProductsToStorage();
+                renderAllSections();
+
+                // If media manager list is currently open, refresh its thumbnails
+                populateMediaManagerList();
+            }
+        }
+
+        // OTHER UI MODALS & DRAWERS
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            nav.classList.toggle('hidden');
+        }
+
+        function openCustomCakeModal() {
+            document.getElementById('custom-cake-modal').classList.remove('hidden');
+        }
+
+        function closeCustomCakeModal() {
+            document.getElementById('custom-cake-modal').classList.add('hidden');
+        }
+
+        function escapeQuotes(str) {
+            return str ? str.replace(/'/g, "\\'") : '';
+        }
+    </script>
+</body>
+</html>
